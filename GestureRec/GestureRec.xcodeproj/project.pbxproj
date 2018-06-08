@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		973AA67820CA827F000359A0 /* GestureRec_01_Iteration8.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 973AA67720CA827F000359A0 /* GestureRec_01_Iteration8.mlmodel */; };
 		97BEEBA220C9D74500883D6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEEBA120C9D74500883D6E /* AppDelegate.swift */; };
 		97BEEBA420C9D74500883D6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEEBA320C9D74500883D6E /* ViewController.swift */; };
 		97BEEBA720C9D74500883D6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97BEEBA520C9D74500883D6E /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		973AA67720CA827F000359A0 /* GestureRec_01_Iteration8.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GestureRec_01_Iteration8.mlmodel; sourceTree = "<group>"; };
 		97BEEB9E20C9D74500883D6E /* GestureRec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GestureRec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97BEEBA120C9D74500883D6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97BEEBA320C9D74500883D6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				97BEEBAA20C9D74600883D6E /* LaunchScreen.storyboard */,
 				97BEEBAD20C9D74600883D6E /* Info.plist */,
 				97BEEBB520C9E03700883D6E /* example_5s0_hand_model.mlmodel */,
+				973AA67720CA827F000359A0 /* GestureRec_01_Iteration8.mlmodel */,
 			);
 			path = GestureRec;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			files = (
 				97BEEBA420C9D74500883D6E /* ViewController.swift in Sources */,
 				97BEEBA220C9D74500883D6E /* AppDelegate.swift in Sources */,
+				973AA67820CA827F000359A0 /* GestureRec_01_Iteration8.mlmodel in Sources */,
 				97BEEBB620C9E03700883D6E /* example_5s0_hand_model.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

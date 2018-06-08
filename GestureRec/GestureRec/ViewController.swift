@@ -43,7 +43,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // # 🤖 CoreML
         // Setup Vision Model
-        guard let selectedModel = try? VNCoreMLModel(for: example_5s0_hand_model().model) else {
+        guard let selectedModel = try? VNCoreMLModel(for: GestureRec_01_Iteration8().model) else {
             fatalError("Could not load model. Ensure model has been drag and dropped (copied) to XCode Project. Also ensure the model is part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")
         }
         
@@ -160,8 +160,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let topPredictionScore:Float? = Float(topPrediction.components(separatedBy: ":")[1].trimmingCharacters(in: .whitespaces))
             
             if (topPredictionScore != nil && topPredictionScore! > 0.01) {
-                if (topPredictionName == "fist-UB-RHand") { symbol = "👊" }
-                if (topPredictionName == "FIVE-UB-RHand") { symbol = "🖐" }
+                if (topPredictionName == "aim") { symbol = "👉" }
+                if (topPredictionName == "shoot") { symbol = "💥" }
+                if (topPredictionName == "hold") { symbol = "👊" }
+                if (topPredictionName == "open") { symbol = "🖐" }
             }
             
             self.GestureLabel.text = symbol
