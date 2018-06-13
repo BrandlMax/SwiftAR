@@ -43,7 +43,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // # 🤖 CoreML
         // Setup Vision Model
-        guard let selectedModel = try? VNCoreMLModel(for: GestureRec_01_Iteration8().model) else {
+        guard let selectedModel = try? VNCoreMLModel(for: GestureRec_01_Iteration11().model) else {
             fatalError("Could not load model. Ensure model has been drag and dropped (copied) to XCode Project. Also ensure the model is part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")
         }
         

@@ -14,6 +14,7 @@
 		97BEEBA920C9D74600883D6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97BEEBA820C9D74600883D6E /* Assets.xcassets */; };
 		97BEEBAC20C9D74600883D6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97BEEBAA20C9D74600883D6E /* LaunchScreen.storyboard */; };
 		97BEEBB620C9E03700883D6E /* example_5s0_hand_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97BEEBB520C9E03700883D6E /* example_5s0_hand_model.mlmodel */; };
+		A94F971320D10EE9009C2FE5 /* GestureRec_01_Iteration11.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A94F971220D10EE9009C2FE5 /* GestureRec_01_Iteration11.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		97BEEBAB20C9D74600883D6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97BEEBAD20C9D74600883D6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97BEEBB520C9E03700883D6E /* example_5s0_hand_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = example_5s0_hand_model.mlmodel; sourceTree = "<group>"; };
+		A94F971220D10EE9009C2FE5 /* GestureRec_01_Iteration11.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GestureRec_01_Iteration11.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				97BEEBAD20C9D74600883D6E /* Info.plist */,
 				97BEEBB520C9E03700883D6E /* example_5s0_hand_model.mlmodel */,
 				973AA67720CA827F000359A0 /* GestureRec_01_Iteration8.mlmodel */,
+				A94F971220D10EE9009C2FE5 /* GestureRec_01_Iteration11.mlmodel */,
 			);
 			path = GestureRec;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				97BEEBA420C9D74500883D6E /* ViewController.swift in Sources */,
 				97BEEBA220C9D74500883D6E /* AppDelegate.swift in Sources */,
 				973AA67820CA827F000359A0 /* GestureRec_01_Iteration8.mlmodel in Sources */,
+				A94F971320D10EE9009C2FE5 /* GestureRec_01_Iteration11.mlmodel in Sources */,
 				97BEEBB620C9E03700883D6E /* example_5s0_hand_model.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
