@@ -17,9 +17,6 @@ class ViewController: UIViewController {
     
     // GLOBAL
     
-    var locked = false
-    var currentTransform : matrix_float4x4?
-    
     var screenCenter: CGPoint {
         let screenSize = view.bounds
         return CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
@@ -29,21 +26,27 @@ class ViewController: UIViewController {
     let ambientLight = SCNLight()
     var currentLightEstimate : ARLightEstimate?
     
+    var locked = false
+    var currentTransform : matrix_float4x4?
     var planeDetectionActive = true
     
-    // EVENTS
+    let objectID = "testBoxModel"
+    
+    // 🎉 EVENTS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         runSession()
         addLightToScene()
         
         // Add Cube
         let modelClone = SCNScene(named: "art.scnassets/cube.scn")!.rootNode.clone()
-        modelClone.name = "testBoxModel"
+        modelClone.name = objectID
         sceneView.scene.rootNode.addChildNode(modelClone)
+        
+        // Add Physics to Cube
+        updatePhysicsOnBox(modelClone)
         
     }
 
@@ -62,7 +65,7 @@ class ViewController: UIViewController {
         print(locked)
     }
     
-    // CUSTOM FUNCTIONS
+    // 🔧 CUSTOM FUNCTIONS
     
     func addLightToScene () {
         omniLight.type = .omni
@@ -80,6 +83,7 @@ class ViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(ambientNode)
     }
     
+    
     func runSession() {
         sceneView.delegate = self
         let configuration = ARWorldTrackingConfiguration()
@@ -96,9 +100,8 @@ class ViewController: UIViewController {
         sceneView.session.run(configuration)
         sceneView.session.delegate = self
         
-//        sceneView.scene.physicsWorld.gravity = SCNVector3Make(0, -0.5, 0)
-        
     }
+    
 
     func updateLights () {
         if let lightInfo = currentLightEstimate {
@@ -108,10 +111,23 @@ class ViewController: UIViewController {
             ambientLight.temperature = lightInfo.ambientColorTemperature
         }
     }
+    
+    
+    func hitInteraction(for nodeName: String){
+        let hits = sceneView.hitTest(screenCenter, options: nil)
+        if !planeDetectionActive && hits.count > 0 && hits[0].isKind(of: SCNHitTestResult.self) {  //found an element!
+            let node = hits[0].node
+            if node.name == nodeName {
+                applyForce(to: node)
+                return
+            }
+        }
+    }
+
 
 }
 
-// EXTENSIONS
+// ➕ EXTENSIONS
 
 extension ViewController : ARSCNViewDelegate {
     
@@ -144,7 +160,6 @@ extension ViewController : ARSessionDelegate {
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         
-        // To Do: make Global?
         currentTransform = frame.camera.transform
         
         /*
@@ -154,23 +169,17 @@ extension ViewController : ARSessionDelegate {
         [-0.00246346, 0.000930991, -0.00169784, 1.0)]]
         */
         
-        if(locked){
-            print("_______________________")
-            print(currentTransform)
-        }
-        
         for node in sceneView.scene.rootNode.childNodes{
-            if node.name == "testBoxModel"{
-                // print("FOUND")
+            
+            if node.name == objectID{
                 if locked{
                     node.simdTransform = currentTransform!
-                    print("_______________________")
-                    print(node.transform)
                 }
                 else{
                     applyForce(to: node)
                 }
             }
+            
         }
         
     }
