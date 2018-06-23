@@ -21,6 +21,12 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUJ-yF-N6Q">
                                 <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                             </arscnView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⏳" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-0k-p6S" userLabel="GestureOverlay">
+                                <rect key="frame" x="513" y="369" width="86" height="96"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdF-oB-tEN">
                                 <rect key="frame" x="20" y="20" width="240" height="128"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bcM-Vu-vkn">
@@ -52,12 +58,6 @@
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⏳" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-0k-p6S" userLabel="GestureOverlay">
-                                <rect key="frame" x="513" y="369" width="86" height="96"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -66,8 +66,8 @@
                             <constraint firstItem="aUJ-yF-N6Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="I9b-p8-qiI"/>
                             <constraint firstItem="YdF-oB-tEN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Rg8-yo-JLA"/>
                             <constraint firstItem="aUJ-yF-N6Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vg4-fo-rX1"/>
-                            <constraint firstItem="o3J-0k-p6S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="agc-gH-299"/>
-                            <constraint firstItem="o3J-0k-p6S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bzV-xk-92D"/>
+                            <constraint firstItem="o3J-0k-p6S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nJz-l0-jgB"/>
+                            <constraint firstItem="o3J-0k-p6S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pyf-rH-Xmx"/>
                             <constraint firstItem="aUJ-yF-N6Q" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vQG-il-1oQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

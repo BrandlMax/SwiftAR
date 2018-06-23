@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad10_5" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TheForceExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="O0s-AX-9SS">
+                                <rect key="frame" x="-14" y="0.0" width="1140" height="834"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="O0s-AX-9SS" secondAttribute="height" multiplier="190:139" id="MpR-pS-uoh"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Overlay" translatesAutoresizingMaskIntoConstraints="NO" id="hcD-Dc-n07">
+                                <rect key="frame" x="196" y="147" width="720" height="540"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hcD-Dc-n07" secondAttribute="height" multiplier="4:3" id="NVX-Z2-4cQ"/>
+                                </constraints>
+                            </imageView>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="877-ql-fCl">
+                                <rect key="frame" x="237.5" y="186" width="637" height="462"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="637" id="dz9-Gq-A37"/>
+                                    <constraint firstAttribute="height" constant="462" id="ozp-aN-drx"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="nEX-2z-h4u" kind="show" id="2aE-lU-coC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="O0s-AX-9SS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="013-dP-9Rk"/>
+                            <constraint firstItem="hcD-Dc-n07" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Q4m-PA-niM"/>
+                            <constraint firstItem="O0s-AX-9SS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dwx-Le-8g2"/>
+                            <constraint firstItem="hcD-Dc-n07" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kZP-vG-pjR"/>
+                            <constraint firstItem="877-ql-fCl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="l9v-W1-1YG"/>
+                            <constraint firstItem="877-ql-fCl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pxk-cW-3sx"/>
+                            <constraint firstItem="O0s-AX-9SS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="y3Z-IE-PVP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33.992805755395686" y="36.690647482014391"/>
+        </scene>
+        <!--Experiment View Controller-->
+        <scene sceneID="mt6-6K-3TA">
+            <objects>
+                <viewController id="nEX-2z-h4u" customClass="ExperimentViewController" customModule="TheForceExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="whA-lW-ZUD">
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXK-mv-gFk">
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sXK-mv-gFk" firstAttribute="leading" secondItem="Ocu-tg-Ki3" secondAttribute="leading" id="ZIY-P1-YtV"/>
+                            <constraint firstItem="sXK-mv-gFk" firstAttribute="bottom" secondItem="Ocu-tg-Ki3" secondAttribute="bottom" id="kYS-f0-kyc"/>
+                            <constraint firstItem="sXK-mv-gFk" firstAttribute="top" secondItem="whA-lW-ZUD" secondAttribute="top" id="pLq-Gj-hn9"/>
+                            <constraint firstItem="sXK-mv-gFk" firstAttribute="trailing" secondItem="Ocu-tg-Ki3" secondAttribute="trailing" id="tvT-Zr-RMa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ocu-tg-Ki3"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="sXK-mv-gFk" id="Dp8-JM-Nsx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3X6-of-Br1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668.52517985611507" y="36.690647482014391"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="1024" height="768"/>
+        <image name="Overlay" width="720" height="534"/>
+    </resources>
+</document>
