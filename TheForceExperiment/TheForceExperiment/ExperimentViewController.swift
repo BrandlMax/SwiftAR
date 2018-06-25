@@ -40,7 +40,7 @@ class ExperimentViewController: UIViewController {
         addLightToScene()
         
         // Add Cube
-        let modelClone = SCNScene(named: "art.scnassets/cube.scn")!.rootNode.clone()
+        let modelClone = SCNScene(named: "art.scnassets/trooper.scn")!.rootNode.clone()
         modelClone.name = objectID
         sceneView.scene.rootNode.addChildNode(modelClone)
         
