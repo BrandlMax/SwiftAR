@@ -53,12 +53,16 @@ class ExperimentViewController: UIViewController {
         addLightToScene()
         
         // Add Cube
+        
+        // Trooper https://sketchfab.com/models/9c80ee9978834250bd5940a3fb97e56b#
+        
         let modelClone = SCNScene(named: "art.scnassets/trooper.scn")!.rootNode.clone()
         modelClone.name = objectID
         sceneView.scene.rootNode.addChildNode(modelClone)
+    
         
         // Add Physics to Cube
-        updatePhysicsOnBox(modelClone)
+        // updatePhysicsOnBox(modelClone)
         
         // # 🤖 CoreML
         // Setup Vision Model
