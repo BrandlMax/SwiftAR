@@ -73,17 +73,82 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXK-mv-gFk">
                                 <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                             </arscnView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MV2-XA-Lc4" userLabel="CurGesture Visual Effect View">
+                                <rect key="frame" x="20" y="740" width="74" height="74"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="25X-6Q-dwP">
+                                    <rect key="frame" x="0.0" y="0.0" width="74" height="74"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⏳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBj-d8-jis">
+                                            <rect key="frame" x="26" y="26.5" width="23" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uBj-d8-jis" firstAttribute="centerX" secondItem="25X-6Q-dwP" secondAttribute="centerX" id="1lo-II-8OG"/>
+                                        <constraint firstItem="uBj-d8-jis" firstAttribute="centerY" secondItem="25X-6Q-dwP" secondAttribute="centerY" id="leg-a4-s22"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="eYJ-HC-6P6"/>
+                                    <constraint firstAttribute="height" constant="74" id="hmn-Q8-46S"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhR-NF-Rgx" userLabel="Debug Visual Effect View">
+                                <rect key="frame" x="111" y="644" width="252" height="170"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HgX-70-OtL">
+                                    <rect key="frame" x="0.0" y="0.0" width="252" height="170"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-wi-Sbv">
+                                            <rect key="frame" x="48" y="24" width="156" height="122"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="156" id="VGF-QA-4EW"/>
+                                                <constraint firstAttribute="height" constant="122" id="XAQ-x3-Qew"/>
+                                            </constraints>
+                                            <string key="text">Gesture Recognition
+1
+2
+3
+4</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pcv-wi-Sbv" firstAttribute="centerY" secondItem="HgX-70-OtL" secondAttribute="centerY" id="036-LK-lxe"/>
+                                        <constraint firstItem="pcv-wi-Sbv" firstAttribute="centerX" secondItem="HgX-70-OtL" secondAttribute="centerX" id="kJ0-O6-Lqh"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="Bd6-wI-Vzn"/>
+                                    <constraint firstAttribute="width" constant="252" id="bo2-xz-UAT"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sXK-mv-gFk" firstAttribute="leading" secondItem="Ocu-tg-Ki3" secondAttribute="leading" id="ZIY-P1-YtV"/>
+                            <constraint firstItem="Ocu-tg-Ki3" firstAttribute="bottom" secondItem="GhR-NF-Rgx" secondAttribute="bottom" constant="20" id="aB6-EA-RVR"/>
+                            <constraint firstItem="GhR-NF-Rgx" firstAttribute="leading" secondItem="MV2-XA-Lc4" secondAttribute="trailing" constant="17" id="bSK-CZ-wyX"/>
                             <constraint firstItem="sXK-mv-gFk" firstAttribute="bottom" secondItem="Ocu-tg-Ki3" secondAttribute="bottom" id="kYS-f0-kyc"/>
+                            <constraint firstItem="Ocu-tg-Ki3" firstAttribute="bottom" secondItem="MV2-XA-Lc4" secondAttribute="bottom" constant="20" id="lnu-VX-E3F"/>
                             <constraint firstItem="sXK-mv-gFk" firstAttribute="top" secondItem="whA-lW-ZUD" secondAttribute="top" id="pLq-Gj-hn9"/>
                             <constraint firstItem="sXK-mv-gFk" firstAttribute="trailing" secondItem="Ocu-tg-Ki3" secondAttribute="trailing" id="tvT-Zr-RMa"/>
+                            <constraint firstItem="MV2-XA-Lc4" firstAttribute="leading" secondItem="Ocu-tg-Ki3" secondAttribute="leading" constant="20" id="ziD-x3-xC0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ocu-tg-Ki3"/>
                     </view>
                     <connections>
+                        <outlet property="debugBlurEffectView" destination="GhR-NF-Rgx" id="jmD-iX-r08"/>
+                        <outlet property="debugLabel" destination="pcv-wi-Sbv" id="o3t-xu-8Gh"/>
+                        <outlet property="gestureBlurEffectView" destination="MV2-XA-Lc4" id="CL8-yR-ISB"/>
+                        <outlet property="gestureLabel" destination="uBj-d8-jis" id="vN3-4U-pcY"/>
                         <outlet property="sceneView" destination="sXK-mv-gFk" id="Dp8-JM-Nsx"/>
                     </connections>
                 </viewController>

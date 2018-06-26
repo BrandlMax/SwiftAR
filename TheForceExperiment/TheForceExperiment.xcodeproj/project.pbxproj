@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9721C7CB20E2747C002C917D /* GestureRec_01_Iteration11.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9721C7CA20E2747C002C917D /* GestureRec_01_Iteration11.mlmodel */; };
 		97D992B620DEB71400876283 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D992B520DEB71400876283 /* AppDelegate.swift */; };
 		97D992B820DEB71400876283 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D992B720DEB71400876283 /* ViewController.swift */; };
 		97D992BB20DEB71400876283 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97D992B920DEB71400876283 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9721C7CA20E2747C002C917D /* GestureRec_01_Iteration11.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GestureRec_01_Iteration11.mlmodel; sourceTree = "<group>"; };
 		97D992B220DEB71400876283 /* TheForceExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheForceExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D992B520DEB71400876283 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D992B720DEB71400876283 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				97D992BC20DEB71700876283 /* Assets.xcassets */,
 				97D992BE20DEB71700876283 /* LaunchScreen.storyboard */,
 				97D992C120DEB71700876283 /* Info.plist */,
+				9721C7CA20E2747C002C917D /* GestureRec_01_Iteration11.mlmodel */,
 				97D992CF20DEC22C00876283 /* art.scnassets */,
 			);
 			path = TheForceExperiment;
@@ -148,6 +151,7 @@
 				97D992B820DEB71400876283 /* ViewController.swift in Sources */,
 				97D992CE20DEC17B00876283 /* NodeUtils.swift in Sources */,
 				97D992CC20DEBF0500876283 /* ExperimentViewController.swift in Sources */,
+				9721C7CB20E2747C002C917D /* GestureRec_01_Iteration11.mlmodel in Sources */,
 				97D992B620DEB71400876283 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

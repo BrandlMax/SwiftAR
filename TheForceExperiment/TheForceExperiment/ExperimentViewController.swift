@@ -10,12 +10,17 @@ import Foundation
 import UIKit
 import SceneKit
 import ARKit
+import Vision
 
 class ExperimentViewController: UIViewController {
     
     @IBOutlet weak var sceneView: ARSCNView!
-    // GLOBAL
+    @IBOutlet weak var gestureBlurEffectView: UIVisualEffectView!
+    @IBOutlet weak var debugBlurEffectView: UIVisualEffectView!
+    @IBOutlet weak var debugLabel: UILabel!
+    @IBOutlet weak var gestureLabel: UILabel!
     
+    // GLOBAL
     var screenCenter: CGPoint {
         let screenSize = view.bounds
         return CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
@@ -31,10 +36,18 @@ class ExperimentViewController: UIViewController {
     
     let objectID = "testBoxModel"
     
+    var visionRequests = [VNRequest]()
+    let dispatchQueueML = DispatchQueue(label: "com.brandlmax.dispatchqueueml")
+    
+    
     // 🎉 EVENTS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // # 🚀 ARkit
+        sceneView.delegate = self
         
         runSession()
         addLightToScene()
@@ -47,12 +60,37 @@ class ExperimentViewController: UIViewController {
         // Add Physics to Cube
         updatePhysicsOnBox(modelClone)
         
+        // # 🤖 CoreML
+        // Setup Vision Model
+        guard let selectedModel = try? VNCoreMLModel(for: GestureRec_01_Iteration11().model) else {
+            fatalError("Could not load model. Ensure model has been drag and dropped (copied) to XCode Project. Also ensure the model is part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")
+        }
+        
+        // Set up Vision-CoreML Request
+        let classificationRequest = VNCoreMLRequest(model: selectedModel, completionHandler: classificationCompleteHandler)
+        classificationRequest.imageCropAndScaleOption = VNImageCropAndScaleOption.centerCrop // Crop from centre of images and scale to appropriate size.
+        visionRequests = [classificationRequest]
+        
+        // Begin Loop to Update CoreML
+        loopCoreMLUpdate()
+        
+        
+        // # 🍬 Styling & Eye Candy
+        debugBlurEffectView.layer.cornerRadius = 10
+        debugBlurEffectView.clipsToBounds = true
+        
+        gestureBlurEffectView.layer.cornerRadius = 10
+        gestureBlurEffectView.clipsToBounds = true
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // 👆 Touch Events
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         locked = true
@@ -120,6 +158,99 @@ class ExperimentViewController: UIViewController {
                 applyForce(to: node)
                 return
             }
+        }
+    }
+    
+    
+    // # 🤖 CoreML
+    
+    func loopCoreMLUpdate() {
+        // Continuously run CoreML whenever it's ready. (Preventing 'hiccups' in Frame Rate)
+        dispatchQueueML.async {
+            // 1. Run Update.
+            self.updateCoreML()
+            // 2. Loop this function.
+            self.loopCoreMLUpdate()
+        }
+    }
+    
+    func updateCoreML() {
+        // Get Camera Image as RGB
+        let pixbuff : CVPixelBuffer? = (sceneView.session.currentFrame?.capturedImage)
+        if pixbuff == nil { return }
+        let ciImage = CIImage(cvPixelBuffer: pixbuff!)
+        
+        // Prepare CoreML/Vision Request
+        let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage, options: [:])
+        
+        // Run Vision Image Request
+        do {
+            try imageRequestHandler.perform(self.visionRequests)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func classificationCompleteHandler(request: VNRequest, error: Error?) {
+        // Catch Errors
+        if error != nil {
+            print("Error: " + (error?.localizedDescription)!)
+            return
+        }
+        guard let observations = request.results else {
+            print("No results")
+            return
+        }
+        
+        // Get Classifications
+        let classifications = observations[0...2] // top 3 results
+            .compactMap({ $0 as? VNClassificationObservation })
+            .map({ "\($0.identifier) \(String(format:" : %.2f", $0.confidence))" })
+            .joined(separator: "\n")
+        
+        // Render Classifications
+        DispatchQueue.main.async {
+            // Print Classifications
+            // print(classifications)
+            // print("-------------")
+            
+            // Display Debug Text on screen
+            self.debugLabel.text = "TOP 3 PROBABILITIES: \n" + classifications
+            
+            // Display Top Symbol
+            var symbol = "❎"
+            let topPrediction = classifications.components(separatedBy: "\n")[0]
+            let topPredictionName = topPrediction.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespaces)
+            
+            // Only display a prediction if confidence is above 1%
+            
+            let topPredictionScore:Float? = Float(topPrediction.components(separatedBy: ":")[1].trimmingCharacters(in: .whitespaces))
+            
+            if (topPredictionScore != nil && topPredictionScore! > 0.01) {
+                if (topPredictionName == "aim") {
+                    symbol = "👉"
+                }
+                
+                if (topPredictionName == "shoot") {
+                    symbol = "💥"
+                    
+                }
+                
+                if (topPredictionName == "hold") {
+                    symbol = "👊"
+                    self.locked = true
+                }else{
+                    self.locked = false
+                }
+                
+                if (topPredictionName == "open") {
+                    symbol = "🖐"
+                }
+                
+            }
+            
+            self.gestureLabel.text = symbol
+            
         }
     }
     
