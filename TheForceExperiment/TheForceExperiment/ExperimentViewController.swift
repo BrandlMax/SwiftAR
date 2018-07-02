@@ -35,9 +35,13 @@ class ExperimentViewController: UIViewController {
     var locked = false
     var currentTransform : matrix_float4x4?
     var planeDetectionActive = true
-    var trooperSelected = false
     
+    
+    var trooperSelected = false
     let objectID = "Stormtrooper"
+    
+    var tieSelected = false
+    let object2ID = "Tie"
     
     var visionRequests = [VNRequest]()
     let dispatchQueueML = DispatchQueue(label: "com.brandlmax.dispatchqueueml")
@@ -69,7 +73,13 @@ class ExperimentViewController: UIViewController {
         let modelClone = SCNScene(named: "art.scnassets/trooper.scn")!.rootNode.clone()
         modelClone.name = objectID
         sceneView.scene.rootNode.addChildNode(modelClone)
-    
+        
+        // TIE Fighter
+        // FROM: https://sketchfab.com/models/720c1e633729446b91e339eacb23de3a
+//        let secModelClone = SCNScene(named: "art.scnassets/tie.scn")!.rootNode.clone()
+//        secModelClone.name = object2ID
+//        sceneView.scene.rootNode.addChildNode(secModelClone)
+//
         
         // Add Physics to Cube
         // updatePhysicsOnBox(modelClone)
@@ -184,6 +194,7 @@ class ExperimentViewController: UIViewController {
     func checkTrooperHit(){
         // 🎯 Select Target
         trooperSelected = false
+        tieSelected = false
         
         guard let result = sceneView.hitTest(screenCenter, options: nil).first else {
             return
@@ -196,6 +207,15 @@ class ExperimentViewController: UIViewController {
             // print("Match")
             trooperSelected = true
         }
+        
+//        let boxNode = sceneView.scene.rootNode.childNode(withName: "Tie", recursively: true)
+//
+//        if (boxNode?.contains(result.node))! { //myObjectNodes is declared as  Set<SCNNode>
+//            //This is a match
+//            // print("Match")
+//            tieSelected = true
+//        }
+//
         
     }
     
@@ -378,6 +398,15 @@ extension ExperimentViewController : ARSessionDelegate {
                     applyForce(to: node)
                 }
             }
+            
+//            if node.name == object2ID{
+//                if locked && tieSelected{
+//                    node.simdTransform = currentTransform!
+//                }
+//                else{
+//                    applyForce(to: node)
+//                }
+//            }
             
         }
         
