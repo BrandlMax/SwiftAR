@@ -130,6 +130,31 @@
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-1A-ca4">
+                                <rect key="frame" x="526" y="387" width="60" height="60"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="06V-b6-Cvc">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Open" translatesAutoresizingMaskIntoConstraints="NO" id="ICl-4U-u65">
+                                            <rect key="frame" x="7.5" y="7.5" width="45" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="4hn-ML-tuT"/>
+                                                <constraint firstAttribute="width" constant="45" id="gAd-ul-rEg"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ICl-4U-u65" firstAttribute="centerY" secondItem="06V-b6-Cvc" secondAttribute="centerY" id="DHE-q7-6JB"/>
+                                        <constraint firstItem="ICl-4U-u65" firstAttribute="centerX" secondItem="06V-b6-Cvc" secondAttribute="centerX" id="vgP-fU-Ve4"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Lb2-FG-NZt"/>
+                                    <constraint firstAttribute="height" constant="60" id="fO9-7e-D1y"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -140,6 +165,8 @@
                             <constraint firstItem="Ocu-tg-Ki3" firstAttribute="bottom" secondItem="MV2-XA-Lc4" secondAttribute="bottom" constant="20" id="lnu-VX-E3F"/>
                             <constraint firstItem="sXK-mv-gFk" firstAttribute="top" secondItem="whA-lW-ZUD" secondAttribute="top" id="pLq-Gj-hn9"/>
                             <constraint firstItem="sXK-mv-gFk" firstAttribute="trailing" secondItem="Ocu-tg-Ki3" secondAttribute="trailing" id="tvT-Zr-RMa"/>
+                            <constraint firstItem="4gn-1A-ca4" firstAttribute="centerY" secondItem="whA-lW-ZUD" secondAttribute="centerY" id="uDY-Fa-99U"/>
+                            <constraint firstItem="4gn-1A-ca4" firstAttribute="centerX" secondItem="whA-lW-ZUD" secondAttribute="centerX" id="vL7-et-9JX"/>
                             <constraint firstItem="MV2-XA-Lc4" firstAttribute="leading" secondItem="Ocu-tg-Ki3" secondAttribute="leading" constant="20" id="ziD-x3-xC0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ocu-tg-Ki3"/>
@@ -148,8 +175,10 @@
                         <outlet property="debugBlurEffectView" destination="GhR-NF-Rgx" id="jmD-iX-r08"/>
                         <outlet property="debugLabel" destination="pcv-wi-Sbv" id="o3t-xu-8Gh"/>
                         <outlet property="gestureBlurEffectView" destination="MV2-XA-Lc4" id="CL8-yR-ISB"/>
+                        <outlet property="gestureImageView" destination="ICl-4U-u65" id="oie-v7-W7Q"/>
                         <outlet property="gestureLabel" destination="uBj-d8-jis" id="vN3-4U-pcY"/>
                         <outlet property="sceneView" destination="sXK-mv-gFk" id="Dp8-JM-Nsx"/>
+                        <outlet property="targetPointerEffectView" destination="4gn-1A-ca4" id="i2W-sC-XWj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3X6-of-Br1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,6 +188,7 @@
     </scenes>
     <resources>
         <image name="Background" width="1024" height="768"/>
+        <image name="Open" width="98" height="125"/>
         <image name="Overlay" width="720" height="534"/>
     </resources>
 </document>

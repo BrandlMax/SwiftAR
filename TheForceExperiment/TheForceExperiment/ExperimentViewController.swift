@@ -19,6 +19,8 @@ class ExperimentViewController: UIViewController {
     @IBOutlet weak var debugBlurEffectView: UIVisualEffectView!
     @IBOutlet weak var debugLabel: UILabel!
     @IBOutlet weak var gestureLabel: UILabel!
+    @IBOutlet weak var targetPointerEffectView: UIVisualEffectView!
+    @IBOutlet weak var gestureImageView: UIImageView!
     
     // GLOBAL
     var screenCenter: CGPoint {
@@ -33,12 +35,21 @@ class ExperimentViewController: UIViewController {
     var locked = false
     var currentTransform : matrix_float4x4?
     var planeDetectionActive = true
+    var trooperSelected = false
     
-    let objectID = "testBoxModel"
+    let objectID = "Stormtrooper"
     
     var visionRequests = [VNRequest]()
     let dispatchQueueML = DispatchQueue(label: "com.brandlmax.dispatchqueueml")
     
+    var showHelperInterface = false
+    
+    
+    // ACTIONS
+    
+//    var isPushed = true
+//    let push = SCNAction.moveBy(x: 0, y: 0, z: -0.8, duration: 0.5)
+//    let reset = SCNAction.moveBy(x: 0, y: 0, z: 0.8, duration: 0.5)
     
     // 🎉 EVENTS
     
@@ -52,9 +63,8 @@ class ExperimentViewController: UIViewController {
         runSession()
         addLightToScene()
         
-        // Add Cube
-        
-        // Trooper https://sketchfab.com/models/9c80ee9978834250bd5940a3fb97e56b#
+        // Trooper
+        // FROM: https://sketchfab.com/models/9c80ee9978834250bd5940a3fb97e56b#
         
         let modelClone = SCNScene(named: "art.scnassets/trooper.scn")!.rootNode.clone()
         modelClone.name = objectID
@@ -86,6 +96,9 @@ class ExperimentViewController: UIViewController {
         gestureBlurEffectView.layer.cornerRadius = 10
         gestureBlurEffectView.clipsToBounds = true
         
+        targetPointerEffectView.layer.cornerRadius = 30
+        targetPointerEffectView.clipsToBounds = true
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,13 +110,16 @@ class ExperimentViewController: UIViewController {
     // 👆 Touch Events
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        locked = true
-        print(locked)
+        
+        showHelperInterface = !showHelperInterface
+        
+//        locked = true
+//        print(locked)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        locked = false
-        print(locked)
+//        locked = false
+//        print(locked)
     }
     
     // 🔧 CUSTOM FUNCTIONS
@@ -165,6 +181,24 @@ class ExperimentViewController: UIViewController {
         }
     }
     
+    func checkTrooperHit(){
+        // 🎯 Select Target
+        trooperSelected = false
+        
+        guard let result = sceneView.hitTest(screenCenter, options: nil).first else {
+            return
+        }
+        
+        let trooperNode = sceneView.scene.rootNode.childNode(withName: "Stormtrooper", recursively: true)
+        
+        if (trooperNode?.contains(result.node))! { //myObjectNodes is declared as  Set<SCNNode>
+            //This is a match
+            // print("Match")
+            trooperSelected = true
+        }
+        
+    }
+    
     
     // # 🤖 CoreML
     
@@ -219,10 +253,12 @@ class ExperimentViewController: UIViewController {
             // print("-------------")
             
             // Display Debug Text on screen
-            self.debugLabel.text = "TOP 3 PROBABILITIES: \n" + classifications
+            self.debugLabel.text = "Prediction: \n" + classifications
             
             // Display Top Symbol
             var symbol = "❎"
+            self.gestureImageView.image = nil
+            
             let topPrediction = classifications.components(separatedBy: "\n")[0]
             let topPredictionName = topPrediction.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespaces)
             
@@ -230,27 +266,41 @@ class ExperimentViewController: UIViewController {
             
             let topPredictionScore:Float? = Float(topPrediction.components(separatedBy: ":")[1].trimmingCharacters(in: .whitespaces))
             
-            if (topPredictionScore != nil && topPredictionScore! > 0.01) {
+            
+            if (topPredictionScore != nil && topPredictionScore! > 0.5) {
                 if (topPredictionName == "aim") {
                     symbol = "👉"
+                    self.gestureImageView.image = UIImage(named: "Aim")
                 }
                 
                 if (topPredictionName == "shoot") {
                     symbol = "💥"
+                    self.gestureImageView.image = UIImage(named: "Shoot")
                     
                 }
                 
                 if (topPredictionName == "hold") {
                     symbol = "👊"
+                    self.gestureImageView.image = UIImage(named: "Hold")
                     self.locked = true
+            
                 }else{
                     self.locked = false
                 }
                 
                 if (topPredictionName == "open") {
                     symbol = "🖐"
+                    self.gestureImageView.image = UIImage(named: "Open")
                 }
                 
+            }
+            
+            if(self.showHelperInterface){
+                self.gestureBlurEffectView.isHidden = true
+                self.debugBlurEffectView.isHidden = true
+            }else{
+                self.gestureBlurEffectView.isHidden = false
+                self.debugBlurEffectView.isHidden = false
             }
             
             self.gestureLabel.text = symbol
@@ -303,11 +353,26 @@ extension ExperimentViewController : ARSessionDelegate {
          [-0.00246346, 0.000930991, -0.00169784, 1.0)]]
          */
         
+        
+        // Check if Trooper is Selected (in Center)
+        self.checkTrooperHit()
+        
         for node in sceneView.scene.rootNode.childNodes{
             
             if node.name == objectID{
-                if locked{
+                if locked && trooperSelected{
                     node.simdTransform = currentTransform!
+                    
+                    // Animation Try
+//                    if(isPushed){
+//                        isPushed = false
+//                        node.runAction(push) {
+//                            print("done")
+//                            self.isPushed = true;
+//                            // node.runAction(self.reset)
+//                        }
+//                    }
+
                 }
                 else{
                     applyForce(to: node)
