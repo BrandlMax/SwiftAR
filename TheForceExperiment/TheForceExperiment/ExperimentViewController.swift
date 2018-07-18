@@ -185,7 +185,7 @@ class ExperimentViewController: UIViewController {
         if !planeDetectionActive && hits.count > 0 && hits[0].isKind(of: SCNHitTestResult.self) {  //found an element!
             let node = hits[0].node
             if node.name == nodeName {
-                applyForce(to: node)
+                // applyForce(to: node)
                 return
             }
         }
@@ -395,7 +395,7 @@ extension ExperimentViewController : ARSessionDelegate {
 
                 }
                 else{
-                    applyForce(to: node)
+                    // applyForce(to: node)
                 }
             }
             
